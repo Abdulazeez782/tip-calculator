@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Timings</title>
+</head>
+<body>
+    <h1>Javascript Timings</h1>
+    <button>Button</button>
+    <p></p>
+
+    <p id="par2"><span class="sec">00</span><span class="min">:00</span></p>
+    <button id="start">Start</button>
+
+    <script>
+        const button = document.querySelector("button");
+        const par = document.querySelector("p");
+
+        let timeDisplay = document.getElementById("par2");
+        let startWatch = document.getElementById("start");
+        let sec = document.querySelector("sec");
+        let min = document.querySelector("min");
+        // const popup = function() {
+        //     alert("This is a popup");
+        // }
+
+        // const alertTimeout = window.setTimeout(function() {
+        //     popup();
+        // }, 5000)
+
+        // button.onclick = function() {
+        //     clearTimeout(alertTimeout);
+        //     alert("Alert Cleared");
+        // }
+
+        // let line = 01;
+        // const lineIncrease = function() {
+        //     if(line >= 10) {
+        //         clearInterval(lineInterval);
+        //         return line;
+        //     }
+        //     line++;
+        //     return "line " + line;
+        // }
+
+        // const lineInterval = setInterval(function() {
+        //     par.innerHTML += lineIncrease() + "<br>";
+        // }, 1000)
+
+
+
+        startWatch.addEventListener('click', watchStart);
+        
+             min = 0;
+             sec = 0;
+        
+        function stopWatch() {
+
+            sec++;
+
+            if(sec/60 === 1){
+                sec = 0;
+                min++;
+            }
+            if(sec < 10) {
+                sec = "0" + sec;
+            }
+            if(min >= 2){
+                window.clearInterval(watch);
+            }
+
+            timeDisplay.innerHTML = "0" + min + ":" + sec;
+            
+        }
+
+        let watch = null;
+
+        function watchStart() {
+            watch = window.setInterval(stopWatch, 100);
+        }
+    </script>
+</body>
+</html>
